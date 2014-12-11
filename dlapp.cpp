@@ -1,9 +1,9 @@
 #include "dlapp.h"
 
 #include "dluicommon.h"
-#include <cryptopp/aes.h>
-#include <cryptopp/dh.h>
-#include <cryptopp/modes.h>
+//#include <cryptopp/aes.h>
+//#include <cryptopp/dh.h>
+//#include <cryptopp/modes.h>
 
 DLApp::DLApp(int &argc, char **argv, int flags) :
     QApplication(argc, argv, flags)
@@ -45,6 +45,9 @@ bool DLApp::MasterPasswordIsSet()
 
 QByteArray DLApp::EncodeMasterPassword(const QString &a_password, const QString &a_text)
 {
+#if 0x1
+    return QByteArray();
+#else
     // Key
     QUuid v_key_uuid = QUuid(DLUI_AES_COMMON_KEY_UUID);
     QByteArray v_key = v_key_uuid.toRfc4122();
@@ -82,10 +85,14 @@ QByteArray DLApp::EncodeMasterPassword(const QString &a_password, const QString 
     qDebug() << "Encrypted Text(3) : " << encBytes.toBase64();
 
     return encBytes;
+#endif
 }
 
 QString DLApp::DecodeMasterPassword(const QString &a_password, const QByteArray a_encBytes)
 {
+#if 0x1
+    return "";
+#else
     // Key
     QUuid v_key_uuid = QUuid(DLUI_AES_COMMON_KEY_UUID);
     QByteArray v_key = v_key_uuid.toRfc4122();
@@ -123,4 +130,5 @@ QString DLApp::DecodeMasterPassword(const QString &a_password, const QByteArray 
     {
         return "";
     }
+#endif
 }

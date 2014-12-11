@@ -36,8 +36,8 @@ RESOURCES += DL-UI.qrc \
 FORMS += \
     dlprogress.ui
 
-INCLUDEPATH += C:\Qt\Qt5.3.1\msys-2014-0901\include
-LIBS += -LC:\Qt\Qt5.3.1\msys-2014-0901\lib -lcryptopp
+#INCLUDEPATH += C:\Qt\Qt5.3.1\msys-2014-0901\include
+#LIBS += -LC:\Qt\Qt5.3.1\msys-2014-0901\lib -lcryptopp
 
 OTHER_FILES += \
     TODO.txt
