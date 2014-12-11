@@ -1,0 +1,4 @@
+* bin (.EXE) の同一性チェック
+* master password 機能
+* nbr.h/nbr.cpp
+* t_time.h

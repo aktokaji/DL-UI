@@ -1,0 +1,55 @@
+<!-- header part -->
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<script type='text/javascript' src='qrc:/jslib/jquery-2.1.1.min.js' charset='UTF-8'></script>
+<style>
+  html {height:100%;}
+  body{
+    margin:0;
+    padding:0;
+    height:100%;
+  }
+</style>
+<!-- body part -->
+<input id="mail" type="text" value="abc" />
+<br />
+<input id="password" type="password" value="abc" />
+<br />
+<button id="btn_ok">OK</button> <button id="btn_show">Show</button>
+<br />
+<button id="btn_cancel">キャンセル</button>
+<br />
+<button id="btn_test1">Test 1</button> <button id="btn_test2">Test 2</button>
+
+<script>
+$(function(){
+$("#mail").val(webview.nico_mail);
+$("#password").val(webview.nico_pass);
+});
+
+$("#btn_cancel").click(function(){
+    webview.close();
+});
+
+$("#btn_ok").click(function(){
+    if(webview.check_nicovideo_login($("#mail").val(), $("#password").val()))
+    {
+        webview.on_button_ok($("#mail").val(), $("#password").val());
+        webview.close();
+    }
+    else
+    {
+        alert("Loginエラー");
+    }
+});
+
+$("#btn_show").click(function(){
+    $("#password").attr("type", "text");
+});
+
+$("#btn_test1").click(function(){
+    webview.on_button_test1({a:123, b:"xyz"});
+});
+$("#btn_test2").click(function(){
+    webview.on_button_test1({a:123, b:"xyz"});
+});
+</script>

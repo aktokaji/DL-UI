@@ -1,0 +1,78 @@
+<!-- header part -->
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<script type='text/javascript' src='qrc:/jslib/jquery-2.1.1.min.js' charset='UTF-8'></script>
+<style>
+  html {height:100%;}
+  body{
+    margin:0;
+    padding:0;
+    height:100%;
+  }
+  #progress2{
+    width: 600px;
+    /*border: 1px solid #FF0000;*/
+    margin: 0 auto;
+  }
+  /*
+  #progress2>tbody>tr{
+    border: 1px solid #FF0000;
+  }
+  */
+</style>
+<!-- body part -->
+[page2.html]
+<br />
+[ページ2.html]
+<br />
+<button onclick="webview.on_button_dialog_click()">ダイアログ</button>
+<button onclick="webview.on_button_1_click()">ボタン1</button>
+<input type="checkbox" id="trial">体験版
+<br />
+<textarea id="watch_url" rows="4" cols="80"></textarea> <button id="btn_dl">ダウンロード</button>
+
+<!--
+ <object type="text/csv;header=present;charset=utf8"
+         data="qrc:/data/accounts.csv"
+         width="100%" height="300"></object>
+-->
+
+<!--
+<div id="progress"></div>
+-->
+
+<table id="progress2" border="1">
+  <tbody></tbody>
+</table>
+</body>
+
+<script>
+$(function(){
+    //alert(webview);
+    //$("#watch_url").text(webview.watch_url);
+    $("#watch_url").val(webview.watch_url);
+    webview.set_trial_flag($("#trial").is(':checked'));
+});
+
+var g_append = "<tr><td><object type='text/csv' width='600' height='100'></object></td></tr>";
+$("#btn_dl").click(function(){
+    if($("#watch_url").val()=="")
+    {
+        alert("ビデオのURLを入力してください");
+        return;
+    }
+    var v_refine = webview.refine_watch_url($("#watch_url").val());
+    var v_append = $(g_append);
+    $("object", v_append).attr("data", v_refine);
+    $("#watch_url").val("");
+    //alert(v_append.get(0).outerHTML);
+    $("#progress2>tbody").prepend(v_append);
+});
+
+$('#trial').change(function(){
+    if ($(this).is(':checked')) {
+        webview.set_trial_flag(true);
+    } else {
+        webview.set_trial_flag(false);
+    }
+});
+</script>
