@@ -144,6 +144,7 @@ protected slots:
 void NicoVideoWidget_ShowModal(QWidget *a_parent)
 {
     qDebug() << "[T_Web::on_button_dialog_click(begin)]";
+#if 0x0
     QWidget *widget = new NicoVideoWidget(a_parent);
     widget->setAttribute(Qt::WA_DeleteOnClose);
     widget->setWindowFlags(Qt::Dialog | Qt::SubWindow);
@@ -153,6 +154,17 @@ void NicoVideoWidget_ShowModal(QWidget *a_parent)
     {
         QCoreApplication::processEvents(QEventLoop::AllEvents, 100);
     }
+#else
+    NicoVideoWidget widget(a_parent);
+    //widget.setAttribute(Qt::WA_DeleteOnClose);
+    widget.setWindowFlags(Qt::Dialog | Qt::SubWindow);
+    widget.setWindowModality(Qt::WindowModal);
+    widget.show();
+    while(widget.isVisible())
+    {
+        QCoreApplication::processEvents(QEventLoop::AllEvents, 100);
+    }
+#endif
     qDebug() << "[MasterPasswordDialog_ShowModal(end)]";
     qDebug() << "[T_Web::on_button_dialog_click(end)]";
 }
