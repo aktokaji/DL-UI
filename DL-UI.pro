@@ -18,7 +18,8 @@ SOURCES += main.cpp \
     nicovideowidget.cpp \
     masterpassworddialog.cpp \
     dlapp.cpp \
-    crc32.cpp
+    crc32.cpp \
+    simplecrypt.cpp
 
 HEADERS  += \
     dlprogress.h \
@@ -28,7 +29,8 @@ HEADERS  += \
     masterpassworddialog.h \
     dluicommon.h \
     dlapp.h \
-    crc32.h
+    crc32.h \
+    simplecrypt.h
 
 RESOURCES += DL-UI.qrc \
     bin.qrc

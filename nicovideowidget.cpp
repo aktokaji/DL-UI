@@ -2,6 +2,9 @@
 
 #include <QtCore>
 #include <QtWebKitWidgets>
+#include "simplecrypt.h"
+
+#define SIMPLE_CRYPT_KEY Q_UINT64_C(0x0c2ad4a4acb9f023)
 
 class NicoVideoWidget : public QWebView
 {
@@ -45,7 +48,10 @@ public:
                               QCoreApplication::organizationName(),
                               QCoreApplication::applicationName()
                               );
-        return v_settings.value("nicovideo/password").toString();
+        SimpleCrypt crypto(SIMPLE_CRYPT_KEY);
+        QString encrypted = v_settings.value("nicovideo/password").toString();
+        QString result = crypto.decryptToString(encrypted);
+        return result;
     }
     ////void setNicoPass(const QString &a_nico_pass) {  }
 
@@ -56,6 +62,8 @@ public slots:
     {
         qDebug() << "[NicoVideoWidget::on_button_ok()]" << a_nico_mail << a_nico_pass;
 
+        SimpleCrypt crypto(SIMPLE_CRYPT_KEY);
+        QString result = crypto.encryptToString(a_nico_pass);
         QSettings v_settings( // C:\Users\root\AppData\Roaming\akio.tokaji\yt_dlui.ini
                               QSettings::IniFormat, //QSettings::NativeFormat,
                               QSettings::UserScope, // QSettings::SystemScope,
@@ -63,7 +71,8 @@ public slots:
                               QCoreApplication::applicationName()
                               );
         v_settings.setValue("nicovideo/mail",     a_nico_mail);
-        v_settings.setValue("nicovideo/password", a_nico_pass);
+        //v_settings.setValue("nicovideo/password", a_nico_pass);
+        v_settings.setValue("nicovideo/password", result);
     }
     void on_button_test1(QVariant a_var)
     {
