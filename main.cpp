@@ -239,6 +239,7 @@ int main(int argc, char *argv[])
     g_webview->show();
     //v_webview->watch_url = "https://www.youtube.com/watch?v=Ibua-qDVkOY";
     g_webview->watch_url = "https://www.youtube.com/watch?v=60oXx_kXEOo";
+    g_webview->watch_url = "https://www.youtube.com/watch?v=nfWlot6h_JM"; // Taylor Swift - Shake It Off
     g_webview->setUrl(QUrl("qrc:/page/page1.html"));
 
     MasterPasswordDialog_ShowModal(g_webview);
