@@ -1,6 +1,6 @@
 <RCC>
     <qresource prefix="/">
         <file>bin/PCI-Z-1.3.exe</file>
-        <file>bin/youtube-dl-2014.10.02.exe</file>
+        <file>bin/youtube-dl-2015.02.11.exe</file>
     </qresource>
 </RCC>

@@ -1,4 +1,4 @@
-#include "dlapp.h"
+﻿#include "dlapp.h"
 
 #include "dluicommon.h"
 //#include <cryptopp/aes.h>
@@ -20,7 +20,7 @@ static QUuid GenMd5UuidForBytes(const QByteArray &a_bytes)
     QCryptographicHash v_md5_gen(QCryptographicHash::Md5);
     v_md5_gen.addData(a_bytes);
     QByteArray v_md5 = v_md5_gen.result();
-    Q_ASSERT(v_md5.length()==CryptoPP::AES::BLOCKSIZE);
+    //Q_ASSERT(v_md5.length()==CryptoPP::AES::BLOCKSIZE);
     QUuid v_iv_uuid = QUuid::fromRfc4122(v_md5);
     return v_iv_uuid;
 }

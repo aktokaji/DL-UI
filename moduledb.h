@@ -5,7 +5,8 @@
 
 #define MODULE_PCI_Z "PCI-Z-1.3.exe"
 ////#define MODULE_YT_DL "youtube-dl-2014.08.25.2.exe"
-#define MODULE_YT_DL "youtube-dl-2014.10.02.exe"
+////#define MODULE_YT_DL "youtube-dl-2014.10.02.exe"
+#define MODULE_YT_DL "youtube-dl-2015.02.11.exe"
 
 class ModuleDB : public QObject
 {

@@ -1,4 +1,4 @@
-#include "masterpassworddialog.h"
+﻿#include "masterpassworddialog.h"
 
 ////#include <QtCore>
 #include <QtWebKitWidgets>

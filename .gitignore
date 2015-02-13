@@ -1,1 +1,6 @@
 *.user
+Makefile*
+debug
+release
+Debug
+Release

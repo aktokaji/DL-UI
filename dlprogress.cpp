@@ -1,4 +1,4 @@
-#include "dlprogress.h"
+﻿#include "dlprogress.h"
 #include "ui_dlprogress.h"
 
 #include <QtCore>
